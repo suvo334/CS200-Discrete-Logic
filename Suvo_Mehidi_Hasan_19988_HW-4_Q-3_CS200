@@ -1,0 +1,46 @@
+Q3. Assume that m and n are particular integers. Write Python program to verify it.
+a. Is 6m + 8n even?
+b. Is 10mn + 7 odd?
+c. If m > n > 0, is 𝑚2 ― 𝑛2 composite?
+
+
+
+ANSWER:
+(a): 6m + 8n  is even. And that is true.
+(b): 10mn + 7 is odd. And that is true.
+(c): If  m > n > 0, then this argument is not composite.
+
+If we justify this with python program then,
+def is_even(num):
+    return num % 2 == 0
+
+def is_odd(num):
+    return num % 2 == 1
+
+def is_composite(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return True
+    return False
+
+def verify_properties(m, n):
+    even_check = is_even(6*m + 8*n)
+    odd_check = is_odd(10*m*n + 7)
+    composite_check = is_composite(m**2 - n**2) if m > n > 0 else False
+    return even_check, odd_check, composite_check
+
+# Example usage:
+m = int(input("Enter an integer for m: "))
+n = int(input("Enter an integer for n: "))
+
+even, odd, composite = verify_properties(m, n)
+
+print(f"6m + 8n is even: {even}")
+print(f"10mn + 7 is odd: {odd}")
+print(f"m^2 - n^2 is composite: {composite}")
+
+
+
+If we see the output of this program, we can see that all the arguments are correctly verified, 
