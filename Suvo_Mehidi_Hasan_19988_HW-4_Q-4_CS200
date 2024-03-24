@@ -1,0 +1,53 @@
+Q4:
+Theorem: For every integer k, if k > 0 then 𝑘^2+2𝑘 + 1 is composite. Write Python
+program to verify it.
+"Proof: Suppose k is any integer such that k > 0. If 𝑘2 +2𝑘 + 1 is composite, then
+𝑘2 +2𝑘 + 1 = 𝑟𝑠 for some integers r and s such that
+1 < 𝑟 < 𝑘2 + 2𝑘 + 1
+and
+1 < 𝑠 < 𝑘2 + 2𝑘 + 1
+Since
+𝑘2 + 2𝑘 + 1 = 𝑟𝑠
+and both r and s are strictly between 1 and 𝑘2 +2𝑘 + 1, then 𝑘2 +2𝑘 + 1 is not prime.
+Hence 𝑘2 +2𝑘 + 1 is composite as was to be shown."
+
+
+ANSWER:
+def is_composite(number):
+    """Check if the number is composite."""
+    if number < 4:  # 2 and 3 are primes, 1 is neither prime nor composite.
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return True  # Found a divisor other than 1 and the number itself.
+    return False  # No divisors found, hence not composite.
+
+# Define a function to print the result for each k
+def print_theorem_verification():
+    print("Verifying the theorem for each k from 1 to 10:")
+    for k in range(1, 11):
+        # Calculate the expression
+        expression = k**2 + 2*k + 1
+        # Check if the expression is composite
+        composite = is_composite(expression)
+        print(f"For k = {k}: {k}^2 + 2*{k} + 1 = {expression}, which is {'composite' if composite else 'not composite'}.")
+
+# Run the function to print the verification
+print_theorem_verification()
+
+
+
+
+
+From the output we can see that,
+For k = 1: 1^2 + 2*1 + 1 = 4, which is composite.
+For k = 2: 2^2 + 2*2 + 1 = 9, which is composite.
+For k = 3: 3^2 + 2*3 + 1 = 16, which is composite.
+For k = 4: 4^2 + 2*4 + 1 = 25, which is composite.
+For k = 5: 5^2 + 2*5 + 1 = 36, which is composite.
+For k = 6: 6^2 + 2*6 + 1 = 49, which is composite.
+For k = 7: 7^2 + 2*7 + 1 = 64, which is composite.
+For k = 8: 8^2 + 2*8 + 1 = 81, which is composite.
+For k = 9: 9^2 + 2*9 + 1 = 100, which is composite.
+For k = 10: 10^2 + 2*10 + 1 = 121, which is composite.
+So, the theorem as stated seems to provide that k^2+2K+1 is always composite for every positive integer k.
